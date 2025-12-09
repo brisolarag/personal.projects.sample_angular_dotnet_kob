@@ -1,23 +1,23 @@
 # Biggest changes when going to DELL deployment
-<br>
-´´´Expected steps´´´
-<br>
-1. build the docker image
-2. push into harbor.dell.com/dfs-asset-harbor-registry
-3. run the helm upgrade command
 
-## DNS and real domains
+## Expected steps
+- build the docker image
+- push into harbor.dell.com/dfs-asset-harbor-registry
+- run the helm upgrade command
+
+### DNS and real domains
 - probably need to request a dns entry (I'ts probably availible at the dell digitalcloud)
 
 
-## ImagePullSecrets
+### ImagePullSecrets
 - cluster permissions to download the images from the recure registry (how to do?)
 
-## Secrets
+### Secrets
 - kubernetes secrets (how to do?)
 - hashicorp vault
 
 
+### Changes overview
 | Feature               | Local Dev                 | Company Prod                              |
 | ------------          | -----------------------   | -------------------------------------     |
 | **Access**            | port-forward / localhost  | Real URL (https://app.corp.com)           |
