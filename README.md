@@ -1,8 +1,6 @@
 # Biggest changes when going to DELL deployment
 <br>
-```
-Expected steps
-```
+´´´Expected steps´´´
 <br>
 1. build the docker image
 2. push into harbor.dell.com/dfs-asset-harbor-registry
