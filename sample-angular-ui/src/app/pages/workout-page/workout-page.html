@@ -1,0 +1,45 @@
+<div class="max-w-4xl mx-auto pt-12 pb-24 space-y-6">
+
+    <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-gray-800">
+            {{ langService.t().nav.workout }}
+            <span class="text-indigo-600 ml-2 text-lg font-medium">
+                (Day {{ stateService.selectedDayIndex() + 1 }})
+            </span>
+        </h2>
+        <span class="text-sm text-gray-400 font-medium">
+            {{ workouts().length }} workout{{ workouts().length !== 1 ? 's' : '' }} found
+        </span>
+    </div>
+
+    <div *ngIf="workouts().length === 0"
+        class="py-12 text-center bg-white rounded-2xl border border-dashed border-gray-300">
+        <p class="text-gray-400">Rest Day! No workouts scheduled.</p>
+    </div>
+
+    <div *ngFor="let workout of workouts()"
+        class="w-full p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex justify-between items-center group">
+        <div>
+            <div class="flex items-center space-x-2 mb-2">
+                <span
+                    class="px-2 py-0.5 rounded text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                    {{ workout.exercises.length }} Exercises
+                </span>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                {{ workout.title }}
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">{{ workout.description }}</p>
+        </div>
+
+        <div
+            class="h-10 w-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-indigo-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-white" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </div>
+    </div>
+
+</div>

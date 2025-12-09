@@ -1,0 +1,10 @@
+imagePullPolicy: Never
+
+api:
+  env: "Development"
+
+common-api:
+  env: "Development"
+
+ui:
+  env: "Development"

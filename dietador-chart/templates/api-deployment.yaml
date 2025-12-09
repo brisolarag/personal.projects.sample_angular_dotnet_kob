@@ -1,0 +1,24 @@
+# dietador-chart/templates/api-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api.name }}
+spec:
+  replicas: {{ .Values.api.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.api.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.api.name }}
+    spec:
+      containers:
+        - name: api
+          image: "{{ .Values.api.image }}:{{ .Values.api.tag }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.api.port }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: {{ .Values.api.env }}

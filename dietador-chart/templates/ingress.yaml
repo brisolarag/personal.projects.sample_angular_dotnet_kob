@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # REMOVED: The rewrite-target and use-regex lines are no longer needed
+spec:
+  rules:
+    # 1. UI -> http://localhost-ui
+    - host: localhost-ui
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dietador-ui-service
+                port:
+                  number: 80
+
+    # 2. Main API -> http://localhost-api
+    - host: localhost-api
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dietador-api-service
+                port:
+                  number: 8080
+
+    # 3. Common API -> http://localhost-common-api
+    - host: localhost-common-api
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dietador-common-api-service
+                port:
+                  number: 8081

@@ -1,0 +1,24 @@
+# dietador-chart/templates/common-api-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.commonApi.name }}
+spec:
+  replicas: {{ .Values.commonApi.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.commonApi.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.commonApi.name }}
+    spec:
+      containers:
+        - name: common-api
+          image: "{{ .Values.commonApi.image }}:{{ .Values.commonApi.tag }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.commonApi.port }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: {{ .Values.commonApi.env }}

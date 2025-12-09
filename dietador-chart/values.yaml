@@ -1,0 +1,24 @@
+imagePullPolicy: Never
+api:
+  name: dietador-api
+  image: dietador-api-image
+  tag: latest
+  port: 8080
+  replicaCount: 1
+  env: "Production"
+
+commonApi:
+  name: dietador-common-api
+  image: dietador-common-api-image
+  tag: latest
+  port: 8081
+  replicaCount: 1
+  env: "Production"
+
+ui:
+  name: dietador-ui
+  image: dietador-ui-image
+  tag: latest
+  port: 80
+  replicaCount: 1
+  env: "Production"
